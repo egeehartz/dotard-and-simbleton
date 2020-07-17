@@ -1,6 +1,6 @@
 export const Business = (businessObject) => {
     return `
-        <section class="supply">
+        <article class="businessList">
             <h2 class="business__name">${businessObject.companyName}</h2>
         <div class="business__address">
             ${businessObject.addressFullStreet} <br>
@@ -9,3 +9,9 @@ export const Business = (businessObject) => {
         </section>
     `
 }
+
+/*
+<article class="business--newYork">
+
+        </article>
+*/

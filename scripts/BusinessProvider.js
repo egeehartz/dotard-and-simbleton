@@ -1,3 +1,5 @@
+
+
 const businesses = [
   {
     purchasingAgent: { nameLast: "Kirlin", nameFirst: "Kristy" },
@@ -112,5 +114,28 @@ const businesses = [
 ];
 
 export const useBusinesses = () => {
-    return businesses.slice()
+  return businesses.slice()
+}
+
+
+
+export const useBusinessesNY = () => {
+   const nyBusiness = businesses.filter(business => business.addressStateCode === "NY");
+   return nyBusiness
+}
+ 
+export const useBusinessesManufacturing = () => {
+  const manufacturingBusiness = businesses.filter(business => business.companyIndustry === "Manufacturing");
+  return manufacturingBusiness
+}
+
+export const usePurchasingAgents = () => {
+  const agentInfo = businesses.map(business => {
+    return { 
+    fullName: `${business.purchasingAgent.nameFirst} ${business.purchasingAgent.nameLast}`,
+    company: business.companyName,
+    phoneNumber: business.phoneWork
+    }
+})
+return agentInfo
 }
