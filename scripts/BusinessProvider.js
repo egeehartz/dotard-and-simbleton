@@ -117,8 +117,6 @@ export const useBusinesses = () => {
   return businesses.slice()
 }
 
-
-
 export const useBusinessesNY = () => {
    const nyBusiness = businesses.filter(business => business.addressStateCode === "NY");
    return nyBusiness
@@ -138,4 +136,11 @@ export const usePurchasingAgents = () => {
     }
 })
 return agentInfo
+}
+
+export const useSearch = (inputString) => {
+  const searchOn = businesses.find(business => {
+   return business.purchasingAgent.nameFirst.includes(inputString) || business.purchasingAgent.nameLast.includes(inputString)
+  })
+  return searchOn
 }

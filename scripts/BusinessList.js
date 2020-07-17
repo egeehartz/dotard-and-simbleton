@@ -1,4 +1,4 @@
-import { useBusinessesNY, useBusinessesManufacturing, useBusinesses } from "./BusinessProvider.js"
+import { useBusinessesNY, useBusinessesManufacturing, useBusinesses, useSearch } from "./BusinessProvider.js"
 import { Business } from "./Business.js"
 
 const contentTarget = document.querySelector(".business")
@@ -29,3 +29,30 @@ export const BusinessList = () => {
 
 }
 
+const companySearchResultArticle = document.querySelector(".foundCompanies")
+
+    document
+            .querySelector("#companySearch")
+            .addEventListener("keypress", keyPressEvent => {
+        if (keyPressEvent.charCode === 13) {
+
+            
+               
+            const foundBusiness = useSearch(keyPressEvent.target.value)
+
+            companySearchResultArticle.innerHTML = `
+                <h2>
+                ${foundBusiness.purchasingAgent.nameFirst} ${foundBusiness.purchasingAgent.nameLast}
+                </h2>
+                <section>
+                <h3><b>${foundBusiness.companyName}</b></h3>
+                ${foundBusiness.addressFullStreet}
+                </section>
+                <section>
+                ${foundBusiness.addressCity},
+                ${foundBusiness.addressStateCode}
+                ${foundBusiness.addressZipCode}
+                </section>
+            `;
+        }
+    });
